@@ -74,7 +74,7 @@
 
             const [sidebarOpen, setSidebarOpen] = useState(false);
             const [currentPage, setCurrentPage] = useState(1);
-            const itemsPerPage = 20;
+            const itemsPerPage = 10;
 
             const tableSectionRef = useRef(null);
 
@@ -465,7 +465,7 @@
             const exportToExcelTable = () => {
                 const headers = ["No. Record", "Date", "Floor", "Room", "Item", "Reporter", "Dept", "Eng Status", "Eng PIC", "HK Status", "Finding Note"];
                 let htmlTable = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">`;
-                htmlTable += `<head><meta charset="utf-8"/><style>table{border-collapse:collapse;width:100%;font-family:Calibri,sans-serif;font-size:11pt;}th{background:#1e293b;color:#ffffff;font-weight:bold;border:0.5pt solid #475569;padding:8px;text-align:center;}td{border:0.5pt solid #cbd5e1;padding:6px;vertical-align:middle;}</style></head><body><table><tr>`;
+                htmlTable += `<head><meta charset="utf-8"/><style>table{border-collapse:collapse;width:100%;font-family:Calibri,sans-serif;font-size:11pt;}th{background:#1e293b;color:#ffffff;font-weight:bold;border:0.5pt solid #475569;padding:8px;text-align:center;}td{border:0.5pt solid #cbd5e1;padding:6px;vertical-align:middle;mso-number-format:"\\@";}</style></head><body><table><tr>`;
                 headers.forEach(h => htmlTable += `<th>${h}</th>`);
                 htmlTable += `</tr>`;
                 filteredData.forEach(d => {
@@ -759,8 +759,8 @@
                         <div className="max-w-7xl mx-auto px-4 pt-5 pb-3 w-full">
                             <div className="bg-[#1a2230] border border-slate-800 p-5 rounded-2xl shadow-xl flex flex-col sm:flex-row justify-between items-center gap-4">
                                 <div className="flex items-center justify-center sm:justify-start w-full sm:w-auto">
-                                    {/* LOGO ERIAN HOTEL DIPERTAJAM DAN DIPERJELAS */}
-                                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 85'><path d='M 12 12 L 65 12 M 12 12 L 12 62 L 65 62 M 12 37 L 55 37' fill='none' stroke='%23ffffff' stroke-width='6.5' stroke-linecap='round' stroke-linejoin='round'/><path d='M 85 12 L 138 12 M 111 12 L 111 62' fill='none' stroke='%23ffffff' stroke-width='6.5' stroke-linecap='round' stroke-linejoin='round'/><path d='M 158 12 L 180 62 L 202 12 L 224 62 L 246 12' fill='none' stroke='%23ffffff' stroke-width='6.5' stroke-linecap='round' stroke-linejoin='round'/><path d='M 266 12 L 319 12 M 266 12 L 266 62 M 266 37 L 309 37' fill='none' stroke='%23ffffff' stroke-width='6.5' stroke-linecap='round' stroke-linejoin='round'/><path d='M 339 62 L 339 12 L 392 12' fill='none' stroke='%23ffffff' stroke-width='6.5' stroke-linecap='round' stroke-linejoin='round'/><text x='18' y='80' fill='%23e2e8f0' font-size='13' font-family='Inter, sans-serif' font-weight='700' letter-spacing='11'>H O T E L</text></svg>" alt="ERIAN HOTEL" className="h-10 sm:h-12 object-contain drop-shadow" />
+                                    {/* LOGO ERIAN HOTEL DIPERTAJAM SESUAI GAMBAR REFERENSI BARU */}
+                                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 90'><path d='M 12 14 C 12 8 18 8 26 8 L 65 8 C 73 8 78 12 78 18 L 78 52 C 78 58 73 62 65 62 L 26 62 C 18 62 12 58 12 52 Z M 12 35 L 58 35' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/><path d='M 95 8 L 95 62 M 95 35 L 132 35 M 132 8 L 132 62' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/><path d='M 152 8 L 152 62 M 152 8 L 195 8 M 152 35 L 185 35 M 152 62 L 195 62' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/><path d='M 215 8 L 245 62 L 275 8' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/><path d='M 295 8 L 338 8 M 316 8 L 316 62' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/><text x='18' y='83' fill='%23e2e8f0' font-size='13' font-family='Inter, sans-serif' font-weight='700' letter-spacing='13'>H O T E L</text></svg>" alt="ERIAN HOTEL" className="h-10 sm:h-12 object-contain drop-shadow" />
                                 </div>
                                 <div className="flex flex-wrap gap-2.5 justify-center w-full sm:w-auto">
                                     <button onClick={() => setIsModalOpen(true)} className="flex-1 sm:flex-none bg-amber-600 hover:bg-amber-500 text-white px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-lg shadow-amber-600/20 transition cursor-pointer">
@@ -772,7 +772,7 @@
                         </div>
 
                         <main className="max-w-7xl mx-auto px-4 py-2 space-y-4 w-full flex-1">
-                            {/* DASHBOARD UTAMA: BAR CHART / GRAFIK STATUS KERUSAKAN (TANPA TOTAL FINDINGS) */}
+                            {/* DASHBOARD UTAMA: BAR CHART / GRAFIK STATUS KERUSAKAN */}
                             <div className="bg-[#1a2230] p-6 rounded-2xl shadow-xl border border-slate-800 space-y-4">
                                 <div className="flex justify-between items-center border-b border-slate-800 pb-3">
                                     <h3 className="font-bold text-white text-sm uppercase tracking-wide flex items-center gap-2">
@@ -848,7 +848,7 @@
 
                                     <button onClick={exportToExcelTable} className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl font-bold text-xs flex items-center space-x-2 transition shadow-lg shadow-emerald-600/20 cursor-pointer">
                                         <i className="fa-solid fa-file-excel"></i>
-                                        <span>Export Excel (Auto-Format)</span>
+                                        <span>Export Excel</span>
                                     </button>
                                 </div>
                             </div>
@@ -864,7 +864,7 @@
                                                 <th className="p-3.5">Item Kerusakan</th>
                                                 <th className="p-3.5">Pelapor</th>
                                                 <th className="p-3.5">Status (Eng)</th>
-                                                <th className="p-3.5">Check (HK)</th>
+                                                <th className="p-3.5 w-36">Check (HK)</th>
                                                 <th className="p-3.5 text-center">AI Assist</th>
                                             </tr>
                                         </thead>
@@ -915,7 +915,7 @@
                                                         <select 
                                                             value={item.checkHK} 
                                                             onChange={(e) => updateHkStatus(item.id, e.target.value)}
-                                                            className="text-xs p-2 rounded-xl font-medium focus:outline-none w-full bg-[#0f172a] border border-emerald-500/40 text-emerald-300 cursor-pointer"
+                                                            className="text-xs p-2 rounded-xl font-medium focus:outline-none w-full bg-[#0f172a] border border-emerald-500/40 text-emerald-300 cursor-pointer truncate"
                                                         >
                                                             <option value="Pending">Pending</option>
                                                             <option value="Not Completed">Not Completed</option>
