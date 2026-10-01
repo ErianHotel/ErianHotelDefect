@@ -640,7 +640,7 @@
 
             return (
                 <div className="min-h-screen bg-[#12161f] text-slate-100 pb-12 flex">
-                    {/* SIDEBAR DRAWER DARI KIRI (FILTER STATUS & TOP 5 WORST ROOMS) */}
+                    {/* SIDEBAR DRAWER DARI KIRI */}
                     {sidebarOpen && (
                         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex">
                             <div className="bg-[#1a2230] w-80 h-full p-6 shadow-2xl border-r border-slate-800 flex flex-col justify-between overflow-y-auto">
@@ -759,8 +759,22 @@
                         <div className="max-w-7xl mx-auto px-4 pt-5 pb-3 w-full">
                             <div className="bg-[#1a2230] border border-slate-800 p-5 rounded-2xl shadow-xl flex flex-col sm:flex-row justify-between items-center gap-4">
                                 <div className="flex items-center justify-center sm:justify-start w-full sm:w-auto">
-                                    {/* LOGO ERIAN HOTEL DIPERTAJAM SESUAI GAMBAR REFERENSI BARU */}
-                                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 90'><path d='M 12 14 C 12 8 18 8 26 8 L 65 8 C 73 8 78 12 78 18 L 78 52 C 78 58 73 62 65 62 L 26 62 C 18 62 12 58 12 52 Z M 12 35 L 58 35' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/><path d='M 95 8 L 95 62 M 95 35 L 132 35 M 132 8 L 132 62' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/><path d='M 152 8 L 152 62 M 152 8 L 195 8 M 152 35 L 185 35 M 152 62 L 195 62' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/><path d='M 215 8 L 245 62 L 275 8' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/><path d='M 295 8 L 338 8 M 316 8 L 316 62' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/><text x='18' y='83' fill='%23e2e8f0' font-size='13' font-family='Inter, sans-serif' font-weight='700' letter-spacing='13'>H O T E L</text></svg>" alt="ERIAN HOTEL" className="h-10 sm:h-12 object-contain drop-shadow" />
+                                    {/* LOGO ERIAN HOTEL PRESISI SESUAI REFERENSI GAMBAR */}
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 65" className="h-10 sm:h-12 object-contain drop-shadow">
+                                        {/* E */}
+                                        <path d="M 52 10 L 20 10 C 14 10 10 14 10 20 L 10 42 C 10 48 14 52 20 52 L 52 52" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+                                        <line x1="10" y1="31" x2="42" y2="31" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+                                        {/* R */}
+                                        <path d="M 66 52 L 66 10 L 92 10 C 98 10 102 14 102 20 C 102 26 98 31 92 31 L 66 31 M 86 31 L 102 52" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        {/* I */}
+                                        <line x1="118" y1="10" x2="118" y2="52" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+                                        {/* A */}
+                                        <path d="M 134 52 L 152 10 L 170 52 M 141 38 L 163 38" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        {/* N */}
+                                        <path d="M 186 52 L 186 10 L 216 52 L 216 10" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        {/* HOTEL */}
+                                        <text x="12" y="62" fill="#e2e8f0" font-size="9" font-family="Inter, sans-serif" font-weight="700" letter-spacing="10">HOTEL</text>
+                                    </svg>
                                 </div>
                                 <div className="flex flex-wrap gap-2.5 justify-center w-full sm:w-auto">
                                     <button onClick={() => setIsModalOpen(true)} className="flex-1 sm:flex-none bg-amber-600 hover:bg-amber-500 text-white px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-lg shadow-amber-600/20 transition cursor-pointer">
@@ -772,7 +786,7 @@
                         </div>
 
                         <main className="max-w-7xl mx-auto px-4 py-2 space-y-4 w-full flex-1">
-                            {/* DASHBOARD UTAMA: BAR CHART / GRAFIK STATUS KERUSAKAN */}
+                            {/* DASHBOARD UTAMA */}
                             <div className="bg-[#1a2230] p-6 rounded-2xl shadow-xl border border-slate-800 space-y-4">
                                 <div className="flex justify-between items-center border-b border-slate-800 pb-3">
                                     <h3 className="font-bold text-white text-sm uppercase tracking-wide flex items-center gap-2">
