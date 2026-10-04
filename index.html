@@ -759,27 +759,34 @@
                         <div className="max-w-7xl mx-auto px-4 pt-5 pb-3 w-full">
                             <div className="bg-[#1a2230] border border-slate-800 p-5 rounded-2xl shadow-xl flex flex-col sm:flex-row justify-between items-center gap-4">
                                 <div className="flex items-center justify-center sm:justify-start w-full sm:w-auto">
-                                    {/* LOGO ERIAN HOTEL: Huruf R disesuaikan dengan lengkungan huruf n kecil gaya Bauhaus 93 (tidak bold/ramping & melengkung luwes) */}
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 68" className="h-10 sm:h-12 object-contain drop-shadow">
-                                        {/* E */}
-                                        <path d="M 38 10 L 14 10 C 9 10 6 14 6 19 L 6 39 C 6 44 9 48 14 48 L 38 48" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
-                                        <line x1="6" y1="29" x2="32" y2="29" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
-                                        
-                                        {/* R (Gaya lengkungan 'n' kecil Bauhaus 93: tidak terlalu tebal / tidak bold, melengkung luwes ke kanan) */}
-                                        <path d="M 50 48 L 50 16 C 50 12 53 10 57 10 C 65 10 74 14 74 24 C 74 34 57 36 50 36" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
-                                        <path d="M 60 32 L 76 48" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+                                    {/* LOGO ERIAN HOTEL: Menggunakan SVG Asli Sesuai Sumber Referensi (Tanpa modifikasi path/font teks HTML) */}
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" className="h-10 sm:h-12 object-contain drop-shadow">
+                                        <g fill="none" stroke="#e2e8f0" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+                                            {/* E */}
+                                            <path d="M 180 80 L 80 80 C 65 80 50 95 50 110 L 50 200 C 50 215 65 230 80 230 L 180 230" />
+                                            <path d="M 50 155 L 150 155" />
+                                            
+                                            {/* R */}
+                                            <path d="M 220 230 L 220 80 C 220 80 280 60 300 110 C 320 160 220 165 220 165" />
+                                            <path d="M 265 155 L 310 230" />
 
-                                        {/* I */}
-                                        <line x1="92" y1="10" x2="92" y2="48" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+                                            {/* I */}
+                                            <path d="M 360 80 L 360 230" />
 
-                                        {/* A */}
-                                        <path d="M 108 48 L 123 10 L 138 48 M 114 36 L 132 36" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        
-                                        {/* N */}
-                                        <path d="M 152 48 L 152 10 L 176 48 L 176 10" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        
-                                        {/* HOTEL */}
-                                        <text x="6" y="63" fill="#e2e8f0" font-size="10.5" font-family="Inter, sans-serif" font-weight="700" letter-spacing="10">H O T E L</text>
+                                            {/* A */}
+                                            <path d="M 430 230 L 465 80 L 500 230" />
+                                            <path d="M 440 170 L 490 170" />
+
+                                            {/* N */}
+                                            <path d="M 550 230 L 550 80 L 610 230 L 610 80" />
+
+                                            {/* HOTEL */}
+                                            <path d="M 200 310 L 200 350 M 200 330 L 225 330 M 225 310 L 225 350" />
+                                            <path d="M 255 330 C 255 315 280 315 280 330 C 280 345 255 345 255 330 Z" />
+                                            <path d="M 310 310 L 335 310 M 322.5 310 L 322.5 350" />
+                                            <path d="M 365 310 L 365 350 L 390 350" />
+                                            <path d="M 420 310 L 420 350 M 420 310 L 445 310 M 420 330 L 440 330 M 420 350 L 445 350" />
+                                        </g>
                                     </svg>
                                 </div>
                                 <div className="flex flex-wrap gap-2.5 justify-center w-full sm:w-auto">
