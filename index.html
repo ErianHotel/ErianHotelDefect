@@ -13,6 +13,7 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #12161f; color: #e2e8f0; scroll-behavior: smooth; }
         input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
+        .logo-white { filter: brightness(0) invert(1); }
     </style>
 </head>
 <body class="bg-[#12161f] text-slate-100 antialiased min-h-screen">
@@ -759,36 +760,8 @@
                         <div className="max-w-7xl mx-auto px-4 pt-5 pb-3 w-full">
                             <div className="bg-[#1a2230] border border-slate-800 p-5 rounded-2xl shadow-xl flex flex-col sm:flex-row justify-between items-center gap-4">
                                 <div className="flex items-center justify-center sm:justify-start w-full sm:w-auto">
-                                    {/* LOGO ERIAN HOTEL: SESUAI REVISI DETAIL ANATOMI HURUF */}
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 110" className="h-10 sm:h-12 object-contain drop-shadow">
-                                        <g fill="none" stroke="#ffffff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
-                                            {/* Huruf E (Cekungan halus & garis tengah mengambang pendek) */}
-                                            <path d="M 58 18 C 50 18 44 18 36 18 C 22 18 14 24 14 36 L 14 48 C 14 60 22 66 36 66 C 44 66 50 66 58 66" />
-                                            <path d="M 14 42 L 44 42" />
-
-                                            {/* Huruf R (Tanpa batangan bawah kepanjangan, bowl melingkar rapi & kaki diagonal) */}
-                                            <path d="M 76 66 L 76 18 C 76 18 96 10 110 26 C 124 42 76 40 76 40" />
-                                            <path d="M 98 40 L 120 66" />
-
-                                            {/* Huruf I (Garis vertikal lurus bersih) */}
-                                            <path d="M 142 18 L 142 66" />
-
-                                            {/* Huruf A (Mirip huruf h kecil tanpa batang atas + garis strip/dash dengan spasi) */}
-                                            <path d="M 166 66 L 166 26 C 166 20 172 16 180 16 C 188 16 194 22 194 30 L 194 66" />
-                                            <path d="M 172 45 L 188 45" stroke-width="4.5" />
-
-                                            {/* Huruf N (Garis lurus, cekungan ke kanan, miring ke bawah, cekungan lagi lanjut lurus) */}
-                                            <path d="M 218 66 L 218 34 C 218 24 228 16 238 18 C 246 20 250 26 250 36 L 250 66" />
-                                            <path d="M 250 30 C 250 22 258 16 268 18 C 276 20 280 26 280 36 L 280 66" />
-
-                                            {/* HOTEL di bawah */}
-                                            <path d="M 102 84 L 102 100 M 102 92 L 110 92 M 110 84 L 110 100" stroke-width="4" />
-                                            <circle cx="130" cy="92" r="8" stroke-width="4" />
-                                            <path d="M 150 84 L 158 84 M 154 84 L 154 100" stroke-width="4" />
-                                            <path d="M 176 84 L 170 84 L 170 100 L 176 100 M 170 92 L 175 92" stroke-width="4" />
-                                            <path d="M 192 84 L 192 100 L 199 100" stroke-width="4" />
-                                        </g>
-                                    </svg>
+                                    {/* LOGO ERIAN HOTEL: MENGGUNAKAN FILE LOGO ASLI DENGAN FILTER PUTIH BERSIH */}
+                                    <img src="LOGO ERIAN (1).png" alt="Erian Hotel" className="h-10 sm:h-12 object-contain logo-white" />
                                 </div>
                                 <div className="flex flex-wrap gap-2.5 justify-center w-full sm:w-auto">
                                     <button onClick={() => setIsModalOpen(true)} className="flex-1 sm:flex-none bg-amber-600 hover:bg-amber-500 text-white px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-lg shadow-amber-600/20 transition cursor-pointer">
