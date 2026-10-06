@@ -3,162 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erian Hotel - Defect Tracking System</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Erian Defect Tracker</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- React & ReactDOM CDN -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <!-- Babel CDN untuk JSX -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- SheetJS CDN untuk Export Excel -->
-    <script src="https://cdn.jsdelivr.net/svg-pan-zoom/3.6.1/svg-pan-zoom.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #12161f; color: #e2e8f0; scroll-behavior: smooth; }
+        input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
+    </style>
 </head>
-<body class="bg-[#0b1120] text-slate-100 font-sans antialiased min-h-screen">
+<body class="bg-[#12161f] text-slate-100 antialiased min-h-screen">
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState, useEffect, useMemo } = React;
+        const { useState, useEffect, useMemo, useRef } = React;
 
         function App() {
-            // Data Master Ruangan
-            const initialRooms = [
-                { floor: 'L', room: 'Lobby Utama' },
-                { floor: 'L', room: 'Restoran / Cafe' },
-                { floor: '2', room: 'Kamar 201' },
-                { floor: '2', room: 'Kamar 202' },
-                { floor: '3', room: 'Kamar 301' },
-                { floor: '3', room: 'Kamar 302' },
-                { floor: '4', room: 'Kamar 401' },
-                { floor: '5', room: 'Kamar 501' },
-                { floor: '6', room: 'Kamar 601' },
-                { floor: '7', room: 'Kamar 701' },
-                { floor: '8', room: 'Kamar 801' },
-                { floor: '9', room: 'Kamar 901' },
+            const initialUserList = [
+                { email: "zainalidris22@gmail.com", pass: "zainal123", name: "Zainal (Asst. FOM)", dept: "FO" },
+                { email: "ameliatanuwidjaja@gmail.com", pass: "amel123", name: "Amel (Accounting Spv)", dept: "CA" },
+                { email: "aswansumarno@gmail.com", pass: "asep123", name: "Asep (FBM)", dept: "FBS" },
+                { email: "dv.bule81@gmail.com", pass: "devy123", name: "Devy (Owner Rep)", dept: "GA" },
+                { email: "indra.fraja@gmail.com", pass: "indra123", name: "Indra (Head Chef)", dept: "FBP" },
+                { email: "rdarst0907@gmail.com", pass: "resti123", name: "Resti (DOSM)", dept: "Sales" },
+                { email: "SarasAndini89@gmail.com", pass: "saras123", name: "Saras (HK SPV)", dept: "HK" },
+                { email: "budihartanto23@gmail.com", pass: "budi123", name: "Budi (Eng SPV)", dept: "Eng" },
+                { email: "rachmatIT23@gmail.com", pass: "rachmat123", name: "Rachmat (ITM)", dept: "IT" },
+                { email: "pipit.sopandian@gmail.com", pass: "pipit123", name: "Pipit (SM)", dept: "Sales" },
+                { email: "septianyuda47@gmail.com", pass: "septian123", name: "Septian (Asst.Bqt Manager)", dept: "FBS" }
             ];
 
-            // List Kategori Item Defect
-            const itemList = [
-                "AC / Pendingin Ruangan",
-                "Kran / Plumbing / Pipa",
-                "Lampu / Kelistrikan",
-                "Pintu / Kunci Smartlock",
-                "TV / Remote / WiFi",
-                "Kasur / Linen / Furniture",
-                "Dinding / Cat / Wallcover",
-                "Kebersihan / Sanitasi",
-                "Lainnya"
-            ];
+            const [userList, setUserList] = useState(() => {
+                const saved = localStorage.getItem('erian_users_list');
+                return saved ? JSON.parse(saved) : initialUserList;
+            });
 
-            // Data Dummy Defect Initial
-            const [defects, setDefects] = useState([
-                {
-                    id: 1,
-                    recordNo: 'DEF-202610-001',
-                    date: '2026-10-01',
-                    floor: '2',
-                    room: 'Kamar 201',
-                    item: 'AC / Pendingin Ruangan',
-                    name: 'Budi Santoso',
-                    dept: 'Housekeeping',
-                    note: 'AC kurang dingin dan berbunyi bising pada fan indoor.',
-                    photo: null,
-                    statusEng: 'Open',
-                    picEng: 'Agus (Eng)',
-                    checkHK: 'Pending'
-                },
-                {
-                    id: 2,
-                    recordNo: 'DEF-202610-002',
-                    date: '2026-10-02',
-                    floor: '3',
-                    room: 'Kamar 302',
-                    item: 'Kran / Plumbing / Pipa',
-                    name: 'Siti Rahma',
-                    dept: 'Housekeeping',
-                    note: 'Wastafel bocor halus di bagian sambungan bawah.',
-                    photo: null,
-                    statusEng: 'Done Progress',
-                    picEng: 'Dedi (Eng)',
-                    checkHK: 'Pending'
-                },
-                {
-                    id: 3,
-                    recordNo: 'DEF-202610-003',
-                    date: '2026-10-03',
-                    floor: 'L',
-                    room: 'Lobby Utama',
-                    item: 'Lampu / Kelistrikan',
-                    name: 'Rian',
-                    dept: 'Front Office',
-                    note: 'Lampu spotlight dekat resepsionis mati 2 unit.',
-                    photo: null,
-                    statusEng: 'Resolved',
-                    picEng: 'Agus (Eng)',
-                    checkHK: 'Verified'
-                }
-            ]);
+            useEffect(() => {
+                localStorage.setItem('erian_users_list', JSON.stringify(userList));
+            }, [userList]);
 
-            // State Pencarian dan Filter
-            const [searchTerm, setSearchTerm] = useState('');
-            const [filterStatus, setFilterStatus] = useState('');
-            const [startDate, setStartDate] = useState('');
-            const [endDate, setEndDate] = useState('');
-            const [selectedRoomFilter, setSelectedRoomFilter] = useState('');
+            const [currentUser, setCurrentUser] = useState(() => {
+                const saved = localStorage.getItem('erian_current_user');
+                return saved ? JSON.parse(saved) : null;
+            });
 
-            // Paginasi
-            const [currentPage, setCurrentPage] = useState(1);
-            const itemsPerPage = 7;
+            const [authEmailInput, setAuthEmailInput] = useState('');
+            const [authPasswordInput, setAuthPasswordInput] = useState('');
+            const [showLoginPass, setShowLoginPass] = useState(false);
+            const [authError, setAuthError] = useState('');
 
-            // Modal Controls
-            const [isModalOpen, setIsModalOpen] = useState(false);
+            const [registerModalOpen, setRegisterModalOpen] = useState(false);
+            const [newEmail, setNewEmail] = useState('');
+            const [newName, setNewName] = useState('');
+            const [newDept, setNewDept] = useState('FO');
+            const [newPass, setNewPass] = useState('');
+            const [showNewPass, setShowNewPass] = useState(false);
+            const [regMsg, setRegMsg] = useState({ text: '', type: '' });
+
             const [changePassOpen, setChangePassOpen] = useState(false);
-            const [aiModalOpen, setAiModalOpen] = useState(false);
-            const [enlargedPhoto, setEnlargedPhoto] = useState(null);
-
-            // Form Input Defect Baru
-            const [formFloor, setFormFloor] = useState('2');
-            const [formRoom, setFormRoom] = useState('Kamar 201');
-            const [formItem, setFormItem] = useState(itemList[0]);
-            const [formNote, setFormNote] = useState('');
-            const [formPhoto, setFormPhoto] = useState(null);
-
-            // Form Change Password
             const [oldPassInput, setOldPassInput] = useState('');
             const [newPassInput, setNewPassInput] = useState('');
             const [confirmPassInput, setConfirmPassInput] = useState('');
             const [showOldPass, setShowOldPass] = useState(false);
             const [showNewPassMod, setShowNewPassMod] = useState(false);
             const [showConfirmPass, setShowConfirmPass] = useState(false);
-            const [passMsg, setPassMsg] = useState({ type: '', text: '' });
+            const [passMsg, setPassMsg] = useState({ text: '', type: '' });
 
-            // AI Analysis State
-            const [isAnalyzing, setIsAnalyzing] = useState(false);
-            const [aiAnalysisResult, setAiAnalysisResult] = useState('');
+            const [sidebarOpen, setSidebarOpen] = useState(false);
+            const [currentPage, setCurrentPage] = useState(1);
+            const itemsPerPage = 10;
 
-            // Filter Room Dropdown berdasarkan Lantai di Form
-            const availableRooms = useMemo(() => {
-                return initialRooms.filter(r => r.floor === formFloor);
-            }, [formFloor]);
+            const tableSectionRef = useRef(null);
 
-            const handleFloorChange = (e) => {
-                const fl = e.target.value;
-                setFormFloor(fl);
-                const matching = initialRooms.filter(r => r.floor === fl);
-                if (matching.length > 0) {
-                    setFormRoom(matching[0].room);
-                }
-            };
-
-            // Handle Upload Foto Preview
-            const handlePhotoUpload = (e) => {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onloadend = () => {
-                        setFormPhoto(reader.result);
-                    };
-                    reader.readAsDataURL(
+            const handleLogin = (e) => {
+                e.preventDefault();
+                const emailClean =
